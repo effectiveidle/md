@@ -84,7 +84,7 @@ git rm从版本库里删除文件
 
 - git remote add <name> git@github.com:effectiveidle/learngit.git，本地仓库与远程关联
 - git remote rm <name>：删除已关联的远程库
-- git push github master：推送到远程库
+- git push -u github master：推送到远程库(加了参数-u后，以后可直接用git push代替git push origin master)
 - git pull github master：从远程库拉取到本地
 
 ### 从远程库克隆 

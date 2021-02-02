@@ -149,4 +149,33 @@ The scope of a declaration is a region of the program text; it is a **compile-ti
 
 - *lexical block*
 
-A declaration’s lexical block determines its scope, There is a lexical block for the entire source code, called the *universe block*  
+A declaration’s lexical block determines its scope, There is a lexical block for the entire source code, called the *universe block* 
+
+# 3 Basic Data Types
+
+### Four categories 
+
+- basic types
+  - numbers, strings, booleans
+- aggregate types
+  - arrays, structs
+- reference types
+  - pointers, slices, maps, functions, channels
+- interface types
+
+## 3.1 Integers
+
+- binary operators for arithmetic, logic, and comparison in order of decreasing precedence
+
+![image-20210202145039045](../img/image-20210202145039045.png)
+
+- %：the sign of the remainder is always the same as the sign of the dividend
+- all values of basic type are comparable
+- bitwise binary operators
+
+![image-20210202152821627](../img/image-20210202152821627.png)
+
+- binary operators for arithmetic and logic(except shifts)must have operands of the same type  
+
+
+

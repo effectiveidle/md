@@ -2,11 +2,21 @@
 
 ## done
 
-DSA第一章(a)(b)
+### Mon
+
+DSA第一章a、b
 
 区块链19、20
 
 Go Page41-50
+
+### Tue
+
+DSA第一章c、d
+
+区块链21
+
+Go 51-56
 
 ## Algorithm
 
