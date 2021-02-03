@@ -80,6 +80,13 @@ git rm从版本库里删除文件
 
 - git remote -v：查看远程库信息，显示可以抓取和推送的origin的地址
 
+### 查看和修改账户信息
+
+- git config user.name 
+- git config user.email 
+- git config --global user.name "username" 
+- git config --global user.email "email"
+
 ### 添加远程库
 
 - git remote add <name> git@github.com:effectiveidle/learngit.git，本地仓库与远程关联
