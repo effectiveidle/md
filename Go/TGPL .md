@@ -153,7 +153,7 @@ A declaration’s lexical block determines its scope, There is a lexical block f
 
 # 3 Basic Data Types
 
-### Four categories 
+Four categories:
 
 - basic types
   - numbers, strings, booleans
@@ -176,6 +176,60 @@ A declaration’s lexical block determines its scope, There is a lexical block f
 ![image-20210202152821627](../img/image-20210202152821627.png)
 
 - binary operators for arithmetic and logic(except shifts)must have operands of the same type  
+
+## 3.2 Floating-Point Numbers
+
+- float32 ande float64
+
+float32 provides 6 decimal digits of precision, whereas float64 provides about 15 digits
+
+- special values defined by IEEE 754
+  - the positive and negative infinities：+Inf, -Inf
+  - not a number: NaN, (any comparison with NaN always yields false)
+
+## 3.3 Complex Numbers
+
+- complex64 and complex128
+
+The built-in function *complex(real, imaginary)* creates a complex number from its real and imaginary components, and the built-in *real* and *imag* functions extract those components:  
+
+## 3.4 Booleans
+
+There is no implicit conversion from a boolean value to a numeric value, or vice versa.
+
+## 3.5 Strings
+
+- len( )
+
+The built-in len function returns the number of bytes in a string , and the index operation s[i] retrieves the i-th byte of string s. The i-th byte of a string is not necessarily the i-th character, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
+
+- substring operation s[i : j]
+
+
+The result contains j-i bytes, not including the byte at index j
+
+- The + operator makes a new string by concatenating two strings
+- the byte sequence contained in a string value can never be changed
+
+Immutability means it is safe for two copies of a string to share the same underlying memory  
+
+### 3.5.1 String Literals
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
