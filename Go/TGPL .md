@@ -215,21 +215,40 @@ Immutability means it is safe for two copies of a string to share the same under
 
 ### 3.5.1 String Literals
 
+- A string value can be written as a *string literal*, a sequence of bytes enclosed in double quotes  
+- *escape sequence*
 
+![image-20210204171508503](../img/image-20210204171508503.png)
 
+- A *raw string literal* is written '......'
 
+Raw string literals are a convenient way to write regular expressions, also useful for HTML templates, JSON literals, command usage messages, and the like, which often extend over multiple lines.
 
+### 3.5.2 Unicode
 
+- *rune*
 
+Unicode, which collects all of the characters in all of the world’s writing systems, plus accents and other diacritical marks, control codes like tab and carriage return, and plenty of esoterica, and **assigns each one a standard number** called a Unicode code point or, in Go terminology, a *rune*.  We could represent a sequence of runes as a sequence of **int32** values, In this representation, which is called **UTF-32** or UCS-4, the encoding of each Unicode code point has the same size, **32 bits**.   
 
+### 3.5.3 UTF-8
 
+- UTF-8 is a variable-length encoding of Unicode code points as bytes.  
 
+It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use.  
 
+1. A high-order 0 indicates 7-bit ASCII, it is identical to convent ion al ASCII
+2. A high-order 110 indicates that the rune takes 2 bytes
 
+- *range* loop, when applied to a string , performs UTF-8 decoding implicitly.  
 
+Each time a UTF-8 decoder, whether explicit in a call to *utf8.DecodeRuneInString* or
+implicit in a *range* loop, consumes an unexpected input byte, it generates a special Unicode *replacement character*, '\uFFFD'
 
+![image-20210204215645201](../img/image-20210204215645201.png)
 
+- [ ]rune
 
+A []rune conversion applied to a UTF-8-encoded string returns the sequence of Unicode
+code points that the string encodes; If a slice of runes is converted to a string , it produces the concatenation of the UTF-8 encodings of each rune. Converting an integer value to a string interprets the integer as a rune value, and yields the UTF-8 representation of that rune. 
 
-
-
+### 3.5.4 Strings and Byte Slices

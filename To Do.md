@@ -1,49 +1,25 @@
 # To Do
 
-## Done
-
-### Mon
-
-DSA第一章a、b
-
-区块链19、20
-
-Go Page41-50
-
-### Tue
-
-DSA第一章c、d
-
-区块链21
-
-Go 51-56
-
-### Wed
-
-DSA第一章e、xc
-
-Go 56-65
-
-区块链22上
-
-### Thu
-
-
-
-### Fri
-
-
+| Done |                                      |
+| :--- | ------------------------------------ |
+| Mon  | DSA第一章a、b\|区块链19、20\|Go41-50 |
+| Tue  | DSA第一章c、d\|区块链21\|Go 51-56    |
+| Wed  | DSA第一章e、xc\|Go 56-65\|区块链22上 |
+| Thu  | DSA第二章a、b、c\|Go 65-71           |
+| Fri  |                                      |
+| Sat  |                                      |
+| Sun  |                                      |
 
 ## BDWare
 
 - [x] 区块链技术与应用
-- [ ] 区块链技术指南
-- [ ] 比特币白皮书
-- [ ] 以太坊白皮书
+- [x] 区块链技术指南
+- [x] 比特币白皮书
+- [x] 以太坊白皮书
 - [x] Paxos
-- [ ] RAFT
-- [ ] BFT/PBFT
-- [ ] libp2p
+- [x] RAFT
+- [x] BFT/PBFT
+- [x] libp2p
 
 ## Go
 
@@ -58,7 +34,7 @@ Go 56-65
 
 ## Operating System
 
-- [x] ostep
+- [ ] ostep
 
 
 - [ ] MIT 6.s081
@@ -76,7 +52,7 @@ Go 56-65
 
 ## Database
 
-- [ ] MySQL必知必会
+- [x] MySQL必知必会
 
 ## Operations
 
@@ -87,9 +63,12 @@ Go 56-65
 ## C/C++
 
 - [ ] The C Programming Language
+- [ ] C++ Primer
+- [ ] Effective C++
+- [ ] More Effective C++
 
 ## Project
 
-- [ ] 购物网站(Go)
-
-- [ ] 数据库连接池(C++)
+- [x] simpleWebsite(Go)
+- [x] simpleBitcoin(Go)
+- [ ] MySQL Connection Pool(C++)
