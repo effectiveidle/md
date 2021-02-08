@@ -10,7 +10,7 @@ $ go bulid
 
 Each source file begins with a package declaration that states which package the file belongs to,followed by a list of other packages that it imports.
 
-Package main is special. It defines a standalone executable program, not a library.Within package main the function main is also spqcial—it's where execution of the program begins.Whatever main does is what the program does.
+Package main is special. It defines a standalone executable program, not a library.Within package main the function main is also special—it's where execution of the program begins.Whatever main does is what the program does.
 
 ## Function
 
