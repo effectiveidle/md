@@ -1,14 +1,14 @@
 # To Do
 
-| Done |                                      |
-| :--- | ------------------------------------ |
-| Mon  | DSA第二章e、f\|                      |
-| Tue  | DSA第一章c、d\|区块链21\|Go 51-56    |
-| Wed  | DSA第一章e、xc\|Go 56-65\|区块链22上 |
-| Thu  | DSA第二章a、b、c\|Go 65-71           |
-| Fri  | DSA第二章d1-d5\|                     |
-| Sat  |                                      |
-| Sun  |                                      |
+| Done |                 |
+| :--- | --------------- |
+| Mon  | DSA第二章e、f   |
+| Tue  |                 |
+| Wed  | Go 71-75        |
+| Thu  |                 |
+| Fri  | Go 75- \| Paxos |
+| Sat  |                 |
+| Sun  |                 |
 
 ## BDWare
 
@@ -30,9 +30,10 @@
 ## Algorithm
 
 - [x] 数据结构.邓俊辉
-- [x] 王道机试指南
+- [ ] 王道机试指南
+- [ ] Leetcode
 
-## Operating System
+## System
 
 - [ ] ostep
 
@@ -42,9 +43,9 @@
 - [ ] 程序员自我修养
 - [ ] MIT 6.824
 
-## Computer Network
+## Networking
 
-- [x] 计算机网络自顶向下
+- [ ] 计算机网络自顶向下
 - [ ] 网络是怎样连接的
 - [ ] 图解TCP/TP
 - [ ] 图解HTTP
@@ -52,13 +53,14 @@
 
 ## Database
 
-- [x] MySQL必知必会
+- [ ] MySQL必知必会
+- [ ] 高性能MySQL
 
 ## Operations
 
-- [x] Git
-
+- [ ] Git
 - [ ] Linux
+- [ ] Docker
 
 ## C/C++
 
@@ -70,5 +72,5 @@
 ## Project
 
 - [x] simpleWebsite(Go)
-- [x] simpleBitcoin(Go)
+- [ ] simpleBitcoin(Go)
 - [ ] MySQL Connection Pool(C++)

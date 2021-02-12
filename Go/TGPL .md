@@ -47,7 +47,7 @@ It's a slice of string, the first element of os.Args, os.Args[0], is the name of
 
 | Constants | true false iota nil                                          |
 | --------- | ------------------------------------------------------------ |
-| Types     | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex128 complex64  bool byte rune string error |
+| Types     | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex64 complex128  bool byte rune string error |
 | Functions | make len cap new append copy close delete  complex real imag  panic recover |
 
 - **The case of the first letter** of a name determines its visibility across package boundaries.
@@ -133,7 +133,7 @@ Named types also make it possible to define new behaviors for values of the type
 
 ### 2.6.1-imports
 
-By default, the short name is the package name, but an import declaration may specify an alternative name to avoid a conflict 
+By convention, a package’s name matches the last segment of its import path
 
 ### 2.6.2-Package Initialization
 
@@ -143,7 +143,7 @@ init functions can’t be called or referenced, but otherwise they are normal fu
 
 ## 2.7-Scope
 
-- Don't confuse scope with lifetime
+- Don't confuse scope with *lifetime*
 
 The scope of a declaration is a region of the program text; it is a **compile-time property**. The lifetime of a variable is the range of time during execution when the variable can be referred to by other parts of the program; it is a **run-time property**.
 
@@ -252,3 +252,38 @@ A []rune conversion applied to a UTF-8-encoded string returns the sequence of Un
 code points that the string encodes; If a slice of runes is converted to a string , it produces the concatenation of the UTF-8 encodings of each rune. Converting an integer value to a string interprets the integer as a rune value, and yields the UTF-8 representation of that rune. 
 
 ### 3.5.4 Strings and Byte Slices
+
+- [ ]byte(s)
+
+A string contains an array of bytes once created is immutable. By contrast,the elements of a byte slice can be freely modified. the []byte(s) conversion allocates a new byte array holding a copy of the bytes of s, and yields a slice that references the entirety of that array.  
+
+- bytes.Buffer
+
+The bytes package provides the Buffer type for efficient manipulation of byte slices  
+
+### 3.5.5 Conversions between Strings and Numbers
+
+- integer to string
+
+`fmt.Sprintf; strconv.Itoa; `
+
+- string to integer
+
+`strconv.Atoi; strconv.Parseint`
+
+## 3.6 Constants
+
+### 3.6.1 The Constant Generator iota
+
+- *enumerations*, or *enums* for short  
+
+### 3.6.2 Untyped Constants
+
+- uncommitted constants
+
+The compiler represents these uncommitted constants with much greater numeric precision than values of basic types. There are six flavors of these uncommitted constants, called untyped boolean, untyped integer, untyped rune, untyped floating-point, untyped complex, and untyped string. When an untyped constant is assigned to a variable, the constant is implicitly converted to the type of that variable if possible.
+
+# 4 Composite Types
+
+## 4.1 Arrays
+

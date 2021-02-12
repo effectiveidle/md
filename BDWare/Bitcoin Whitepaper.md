@@ -1,5 +1,3 @@
-# Bitcoin: A Peer-to-Peer Electronic Cash System
-
 # 1.Introduction
 
 一个基于加密证明的电子支付系统取代原来的基于信任的基础模型
