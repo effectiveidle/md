@@ -1,14 +1,14 @@
 # To Do
 
-| Done |                 |
-| :--- | --------------- |
-| Mon  | DSA第二章e、f   |
-| Tue  |                 |
-| Wed  | Go 71-75        |
-| Thu  |                 |
-| Fri  | Go 75- \| Paxos |
-| Sat  |                 |
-| Sun  |                 |
+| Done |                             |
+| :--- | --------------------------- |
+| Mon  | DSA第二章e、f               |
+| Tue  |                             |
+| Wed  | Go 71-75                    |
+| Thu  |                             |
+| Fri  | Go 75-80                    |
+| Sat  | Consensus Algorithm\|Go 81- |
+| Sun  |                             |
 
 ## BDWare
 
@@ -58,7 +58,7 @@
 
 ## Operations
 
-- [ ] Git
+- [x] Git
 - [ ] Linux
 - [ ] Docker
 

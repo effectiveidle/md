@@ -84,7 +84,7 @@ A short variable declaration acts like an assignment only to variables that were
 
 ### 2.3.3-The new Function
 
-- Another way to create a variable is to use the built-in function new. 
+- Built-in function new. 
 
 The expression new(T) creates an unnamed variable of **type T**, initializes to the zero value of T, and returns its address, which is a value of type *T 
 
@@ -287,3 +287,12 @@ The compiler represents these uncommitted constants with much greater numeric pr
 
 ## 4.1 Arrays
 
+- The built-in function len returns the number of elements in the array.
+- *array literal*
+
+Indices can appear in any order and some may be omitted, unspecified values take on the zero value for the element type
+
+![image-20210213202251762](../img/image-20210213202251762.png)
+
+- The size of an array is part of its type                                    
+- If an array’s element type is comparable then the array type is comparable too.
