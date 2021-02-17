@@ -8,9 +8,9 @@ $ go bulid
 
 ## Package
 
-Each source file begins with a package declaration that states which package the file belongs to,followed by a list of other packages that it imports.
+Each source file begins with a package declaration that states which package the file belongs to, followed by a list of other packages that it imports.
 
-Package main is special. It defines a standalone executable program, not a library.Within package main the function main is also special—it's where execution of the program begins.Whatever main does is what the program does.
+Package main is special. It defines a standalone executable program, not a library. Within package main the function main is also special — it's where execution of the program begins. Whatever main does is what the program does.
 
 ## Function
 
@@ -26,7 +26,7 @@ so that your source code is always properly formatted
 
 - os.Args
 
-It's a slice of string, the first element of os.Args, os.Args[0], is the name of the command itself, the other elements are the arguments that were presented to the program when it started execution 
+It's a slice of string, the first element of os.Args, os.Args[0], is the name of the command itself, the other elements are the arguments that were presented to the program when it started execution.
 
 # 2 Program Structure
 
@@ -98,7 +98,7 @@ The expression new(T) creates an unnamed variable of **type T**, initializes to 
 
 ## 2.4-Assignment
 
-The value held by a variable is updated by an assignment statement, 
+The value held by a variable is updated by an assignment statement
 
 ### 2.4.1-Tuple Assignment
 
@@ -106,7 +106,7 @@ All of the right-hand side expressions are evaluated before any of the variables
 
 ### 2.4.2-Assignability
 
-the types must exactly match, and nil may be assigned to any variable of interface or reference type  
+The types must exactly match, and nil may be assigned to any variable of interface or reference type  
 
 ## 2.5-Type Declarations
 
@@ -139,7 +139,7 @@ By convention, a package’s name matches the last segment of its import path
 
 - *init function mechanism*
 
-init functions can’t be called or referenced, but otherwise they are normal functions. Within each file, init functions are automatically executed when the program starts, in the order in which they are declared. 
+init functions can’t be called or referenced, but otherwise they are normal functions. Within each file, init functions are **automatically executed** when the program starts, in the order in which they are declared. 
 
 ## 2.7-Scope
 
@@ -170,12 +170,24 @@ Four categories:
 ![image-20210202145039045](../img/image-20210202145039045.png)
 
 - %：the sign of the remainder is always the same as the sign of the dividend
+
+  so -5%3 and -5%-3 are both -2  
+
 - all values of basic type are comparable
+
 - bitwise binary operators
 
 ![image-20210202152821627](../img/image-20210202152821627.png)
 
-- binary operators for arithmetic and logic(except shifts)must have operands of the same type  
+- z = x &^ y：each bit of z is 0 if the corresponding bit of y is 1; otherwise it equals the corresponding bit of x.  
+- binary operators for arithmetic and logic (except shifts) must have operands of the same type
+- Two *fmt.Printf* tricks：
+  1.  [1]adverbs after % tell Printf to use the first operand.
+  2.  \#adverb for %o or %x or %X tells Printf to emit a 0 or 0x or 0X prefix respectively.  
+
+- Rune literals are written as a character within single quotes.
+
+  Runes are printed with %c, or with %q if quoting is desired. 
 
 ## 3.2 Floating-Point Numbers
 
@@ -183,8 +195,17 @@ Four categories:
 
 float32 provides 6 decimal digits of precision, whereas float64 provides about 15 digits
 
+- Very small or very large numbers are better written in scientific notation. 
+- *Printf adverb*：%g、%e (exponent)、%f (no exponent). All three verbs allow field width and numeric precision to be controlled.  
+
 - special values defined by IEEE 754
   - the positive and negative infinities：+Inf, -Inf
+  
+    ```go
+    var z float64
+    fmt.Println(z,-z,1/z,-1/z,z/z) // "0 -0 +Inf -Inf NaN"
+    ```
+  
   - not a number: NaN, (any comparison with NaN always yields false)
 
 ## 3.3 Complex Numbers

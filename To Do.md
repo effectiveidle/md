@@ -2,13 +2,13 @@
 
 | Done |                               |
 | :--- | ----------------------------- |
-| Mon  | DSA第二章e、f                 |
+| Mon  |                               |
 | Tue  |                               |
-| Wed  | Go 71-75                      |
+| Wed  | libp2p\|Go 84-                |
 | Thu  |                               |
 | Fri  | Go 75-80                      |
 | Sat  | Consensus Algorithm\|Go 81-84 |
-| Sun  | libp2p\|Go 84-                |
+| Sun  | libp2p                        |
 
 ## BDWare
 
