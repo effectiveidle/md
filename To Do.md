@@ -4,8 +4,8 @@
 | :--- | ----------------------------- |
 | Mon  |                               |
 | Tue  |                               |
-| Wed  | libp2p\|Go 84-                |
-| Thu  |                               |
+| Wed  |                               |
+| Thu  | Go 84-93                      |
 | Fri  | Go 75-80                      |
 | Sat  | Consensus Algorithm\|Go 81-84 |
 | Sun  | libp2p                        |
@@ -24,6 +24,7 @@
 ## Go
 
 - [x] The Go Programming Language
+- [x] A tour of Go
 
 > >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

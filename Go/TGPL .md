@@ -201,18 +201,24 @@ float32 provides 6 decimal digits of precision, whereas float64 provides about 1
 - special values defined by IEEE 754
   - the positive and negative infinities：+Inf, -Inf
   
+  - not a number: NaN, (any comparison with NaN always yields false, except !=)\
+  
+    The function **math.IsNaN** tests whether its argument is a not-a-number value  
+  
     ```go
     var z float64
     fmt.Println(z,-z,1/z,-1/z,z/z) // "0 -0 +Inf -Inf NaN"
+    nan := math.NaN()
+    fmt.Println(nan != nan, nan == nan, nan < nan, nan > nan)
+    // "true false false false"
+    fmt.Println(math.IsNaN(nan)) // "true"
     ```
-  
-  - not a number: NaN, (any comparison with NaN always yields false)
 
 ## 3.3 Complex Numbers
 
 - complex64 and complex128
 
-The built-in function *complex(real, imaginary)* creates a complex number from its real and imaginary components, and the built-in *real* and *imag* functions extract those components:  
+The built-in function *complex(real, imaginary)* creates a complex number from its real and imaginary components,and the built-in *real* and *imag* functions extract those components  
 
 ## 3.4 Booleans
 
@@ -220,9 +226,13 @@ There is no implicit conversion from a boolean value to a numeric value, or vice
 
 ## 3.5 Strings
 
+A string is an immutable sequence of bytes.
+
 - len( )
 
-The built-in len function returns the number of bytes in a string , and the index operation s[i] retrieves the i-th byte of string s. The i-th byte of a string is not necessarily the i-th character, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
+The built-in len function returns the number of bytes(not runes) in a string , and the index operation s[i] retrieves the i-th byte of string s. 
+
+The i-th byte of a string is not necessarily the i-th character, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
 
 - substring operation s[i : j]
 
@@ -230,9 +240,7 @@ The built-in len function returns the number of bytes in a string , and the inde
 The result contains j-i bytes, not including the byte at index j
 
 - The + operator makes a new string by concatenating two strings
-- the byte sequence contained in a string value can never be changed
-
-Immutability means it is safe for two copies of a string to share the same underlying memory  
+- the byte sequence contained in a string value can never be changed; Immutability means it is safe for two copies of a string to share the same underlying memory  
 
 ### 3.5.1 String Literals
 
@@ -243,44 +251,56 @@ Immutability means it is safe for two copies of a string to share the same under
 
 - A *raw string literal* is written '......'
 
-Raw string literals are a convenient way to write regular expressions, also useful for HTML templates, JSON literals, command usage messages, and the like, which often extend over multiple lines.
+  no escape sequences are processed; the contents are taken literally  
+
+  Raw string literals are a convenient way to write *regular expressions*, also useful for HTML templates, JSON literals, command usage messages, and the like, which often extend over multiple lines.
 
 ### 3.5.2 Unicode
 
 - *rune*
 
-Unicode, which collects all of the characters in all of the world’s writing systems, plus accents and other diacritical marks, control codes like tab and carriage return, and plenty of esoterica, and **assigns each one a standard number** called a Unicode code point or, in Go terminology, a *rune*.  We could represent a sequence of runes as a sequence of **int32** values, In this representation, which is called **UTF-32** or UCS-4, the encoding of each Unicode code point has the same size, **32 bits**.   
+A ***Unicode code point***, in Go terminology called a ***rune***.  We could represent a sequence of runes as a sequence of **int32** values, In this representation, which is called **UTF-32** or UCS-4, the encoding of each Unicode code point has the same size, **32 bits**.   
 
 ### 3.5.3 UTF-8
 
 - UTF-8 is a variable-length encoding of Unicode code points as bytes.  
 
-It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use.  
+  It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use.  
 
-1. A high-order 0 indicates 7-bit ASCII, it is identical to convent ion al ASCII
-2. A high-order 110 indicates that the rune takes 2 bytes
+  - A high-order 0 indicates 7-bit ASCII, it is identical to conventional ASCII
+  - A high-order 110 indicates that the rune takes 2 bytes
 
-- *range* loop, when applied to a string , performs UTF-8 decoding implicitly.  
+- Unicode escapes: \uhhhh for a 16-bit and \Uhhhhhhhh for a 32-bit value
 
-Each time a UTF-8 decoder, whether explicit in a call to *utf8.DecodeRuneInString* or
-implicit in a *range* loop, consumes an unexpected input byte, it generates a special Unicode *replacement character*, '\uFFFD'
+- *range* loop, when applied to a string , performs UTF-8 decoding implicitly.
+
+- A [ ]rune conversion applied to a UTF-8-encoded string returns the sequence of Unicode code points that the string encodes; If a slice of runes is converted to a string, it produces the concatenation of the UTF-8 encodings of each rune. 
+
+- Converting an integer value to a string interprets the integer as a rune value, and yields the UTF-8 representation of that rune.
+
+  ```go
+  fmt.Println(string(65)) // "A", not "65"
+  fmt.Println(string(0x4eac)) // "京"
+  ```
+
+- Each time a UTF-8 decoder, whether explicit in a call to *utf8.DecodeRuneInString* or
+  implicit in a *range* loop, consumes an unexpected input byte, it generates a special Unicode *replacement character*, '\uFFFD'
 
 ![image-20210204215645201](../img/image-20210204215645201.png)
 
-- [ ]rune
-
-A []rune conversion applied to a UTF-8-encoded string returns the sequence of Unicode
-code points that the string encodes; If a slice of runes is converted to a string , it produces the concatenation of the UTF-8 encodings of each rune. Converting an integer value to a string interprets the integer as a rune value, and yields the UTF-8 representation of that rune. 
-
 ### 3.5.4 Strings and Byte Slices
+
+- Four standard packages for manipulating strings
+
+  **bytes, strings, strconv, unicode**
 
 - [ ]byte(s)
 
-A string contains an array of bytes once created is immutable. By contrast,the elements of a byte slice can be freely modified. the []byte(s) conversion allocates a new byte array holding a copy of the bytes of s, and yields a slice that references the entirety of that array.  
+The [ ]byte(s) conversion allocates a new byte array holding a copy of the bytes of s, and yields a slice that references the entirety of that array.  
 
 - bytes.Buffer
 
-The bytes package provides the Buffer type for efficient manipulation of byte slices  
+The bytes package provides the **Buffer** type for efficient manipulation of byte slices  
 
 ### 3.5.5 Conversions between Strings and Numbers
 
@@ -293,6 +313,8 @@ The bytes package provides the Buffer type for efficient manipulation of byte sl
 `strconv.Atoi; strconv.Parseint`
 
 ## 3.6 Constants
+
+- The results of all arithmetic, logical, and comparison operations applied to constant operands are themselves constants, as are the results of conversions and calls to certain built-in functions.
 
 ### 3.6.1 The Constant Generator iota
 
@@ -309,7 +331,7 @@ The compiler represents these uncommitted constants with much greater numeric pr
 ## 4.1 Arrays
 
 - The built-in function len returns the number of elements in the array.
-- *array literal*
+- use an *array literal* to initialize an array
 
 Indices can appear in any order and some may be omitted, unspecified values take on the zero value for the element type
 
@@ -317,3 +339,45 @@ Indices can appear in any order and some may be omitted, unspecified values take
 
 - The size of an array is part of its type                                    
 - If an array’s element type is comparable then the array type is comparable too.
+
+## 4.2 Slices
+
+- A slice is a lightweight data structure that gives access to a subsequence (or perhaps all) of the elements of an array, which is known as the slice’s *underlying array*.
+
+  A slice has three components: a **pointer**, a **length**, and a **capacity**
+
+- slices are not comparable, The standard library provides *bytes.Equal* for comparing two slices of bytes, but for other types of slice, we must do the comparison ourselves.    
+
+- The only legal slice comparison is against nil
+
+- built-in function ***make***, cap can be omitted.
+
+  `make ([]T,len,cap)`
+
+  Under the hood, *make* creates an unnamed array variable and returns a slice of it.
+
+### 4.2.1 The append Function
+
+- The built-in ***append*** function appends items to slices
+
+- built-in function ***copy*** copies elements from one slice to another of the same type
+
+  returns the number of elements actually copied, which is the smaller slice length.
+
+### 4.2.2 In-Place Slice Techniques
+
+
+
+## 4.3 Maps
+
+
+
+## 4.4 Structs
+
+
+
+## 4.5 JSON
+
+
+
+## 4.6 Text and HTML Templates
