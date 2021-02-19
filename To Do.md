@@ -1,14 +1,14 @@
-# To Do
+To Do
 
-| Done |                               |
-| :--- | ----------------------------- |
-| Mon  |                               |
-| Tue  |                               |
-| Wed  |                               |
-| Thu  | Go 84-93                      |
-| Fri  | Go 75-80                      |
-| Sat  | Consensus Algorithm\|Go 81-84 |
-| Sun  | libp2p                        |
+| Done |                                              |
+| :--- | -------------------------------------------- |
+| Mon  |                                              |
+| Tue  |                                              |
+| Wed  |                                              |
+| Thu  | Go 84-93                                     |
+| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99 |
+| Sat  | Consensus Algorithm\|Go 81-84                |
+| Sun  | libp2p                                       |
 
 ## BDWare
 
@@ -16,21 +16,20 @@
 - [x] 区块链技术指南
 - [x] 比特币白皮书
 - [x] 以太坊白皮书
-- [x] Paxos
-- [x] RAFT
-- [x] BFT/PBFT
+- [x] Solidity文档(基础部分)
+- [x] Consensus Algorithm
 - [x] libp2p
 
 ## Go
 
-- [x] The Go Programming Language
+- [x] The Go Programming Language 366
 - [x] A tour of Go
 
 > >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 ## Algorithm
 
-- [x] 数据结构.邓俊辉
+- [ ] 数据结构.邓俊辉
 - [ ] 王道机试指南
 - [ ] Leetcode
 

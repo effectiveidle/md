@@ -47,7 +47,7 @@ It's a slice of string, the first element of os.Args, os.Args[0], is the name of
 
 | Constants | true false iota nil                                          |
 | --------- | ------------------------------------------------------------ |
-| Types     | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex64 complex128  bool byte rune string error |
+| Types     | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex64 complex128                                                  bool byte(uint8) rune(int32) string error |
 | Functions | make len cap new append copy close delete  complex real imag  panic recover |
 
 - **The case of the first letter** of a name determines its visibility across package boundaries.
@@ -171,7 +171,7 @@ Four categories:
 
 - %：the sign of the remainder is always the same as the sign of the dividend
 
-  so -5%3 and -5%-3 are both -2  
+  so `-5%3` and `-5%-3` are both `-2`  
 
 - all values of basic type are comparable
 
@@ -182,12 +182,12 @@ Four categories:
 - z = x &^ y：each bit of z is 0 if the corresponding bit of y is 1; otherwise it equals the corresponding bit of x.  
 - binary operators for arithmetic and logic (except shifts) must have operands of the same type
 - Two *fmt.Printf* tricks：
-  1.  [1]adverbs after % tell Printf to use the first operand.
-  2.  \#adverb for %o or %x or %X tells Printf to emit a 0 or 0x or 0X prefix respectively.  
+  1.  `[1]`adverbs after % tell Printf to use the first operand.
+  2.  `#`adverb for `%o` or `%x` or `%X` tells Printf to emit a 0 or 0x or 0X prefix respectively.  
 
 - Rune literals are written as a character within single quotes.
 
-  Runes are printed with %c, or with %q if quoting is desired. 
+  Runes are printed with `%c`, or with `%q` if quoting is desired. 
 
 ## 3.2 Floating-Point Numbers
 
@@ -195,8 +195,8 @@ Four categories:
 
 float32 provides 6 decimal digits of precision, whereas float64 provides about 15 digits
 
-- Very small or very large numbers are better written in scientific notation. 
-- *Printf adverb*：%g、%e (exponent)、%f (no exponent). All three verbs allow field width and numeric precision to be controlled.  
+- Very small or very large numbers are better written in **scientific notation**. 
+- *Printf adverb*：`%g`、`%e` (exponent)、`%f` (no exponent). All three verbs allow field width and numeric precision to be controlled.  
 
 - special values defined by IEEE 754
   - the positive and negative infinities：+Inf, -Inf
@@ -218,7 +218,7 @@ float32 provides 6 decimal digits of precision, whereas float64 provides about 1
 
 - complex64 and complex128
 
-The built-in function *complex(real, imaginary)* creates a complex number from its real and imaginary components,and the built-in *real* and *imag* functions extract those components  
+The built-in function *complex(real, imaginary)* creates a complex number from its real and imaginary components, and the built-in *real* and *imag* functions extract those components  
 
 ## 3.4 Booleans
 
@@ -232,15 +232,13 @@ A string is an immutable sequence of bytes.
 
 The built-in len function returns the number of bytes(not runes) in a string , and the index operation s[i] retrieves the i-th byte of string s. 
 
-The i-th byte of a string is not necessarily the i-th character, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
+The **i-th byte** of a string is not necessarily the **i-th character**, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
 
-- substring operation s[i : j]
-
-
-The result contains j-i bytes, not including the byte at index j
+- The **substring** operation s[i : j] yields a new string.
 
 - The + operator makes a new string by concatenating two strings
-- the byte sequence contained in a string value can never be changed; Immutability means it is safe for two copies of a string to share the same underlying memory  
+- The **byte** sequence contained in a string value can never be changed (but we can assign a new value to a string variable or to append one
+  string to another) Immutability means it is safe for two copies of a string to share the same underlying memory. 
 
 ### 3.5.1 String Literals
 
@@ -257,8 +255,6 @@ The result contains j-i bytes, not including the byte at index j
 
 ### 3.5.2 Unicode
 
-- *rune*
-
 A ***Unicode code point***, in Go terminology called a ***rune***.  We could represent a sequence of runes as a sequence of **int32** values, In this representation, which is called **UTF-32** or UCS-4, the encoding of each Unicode code point has the same size, **32 bits**.   
 
 ### 3.5.3 UTF-8
@@ -268,7 +264,9 @@ A ***Unicode code point***, in Go terminology called a ***rune***.  We could rep
   It uses between 1 and 4 bytes to represent each rune, but only 1 byte for ASCII characters, and only 2 or 3 bytes for most runes in common use.  
 
   - A high-order 0 indicates 7-bit ASCII, it is identical to conventional ASCII
-  - A high-order 110 indicates that the rune takes 2 bytes
+  - A high-order 110 indicates that the rune takes 2 bytes, the second byte begins with 10
+
+  ![image-20210218202118263](../img/image-20210218202118263.png)
 
 - Unicode escapes: \uhhhh for a 16-bit and \Uhhhhhhhh for a 32-bit value
 
@@ -283,8 +281,7 @@ A ***Unicode code point***, in Go terminology called a ***rune***.  We could rep
   fmt.Println(string(0x4eac)) // "京"
   ```
 
-- Each time a UTF-8 decoder, whether explicit in a call to *utf8.DecodeRuneInString* or
-  implicit in a *range* loop, consumes an unexpected input byte, it generates a special Unicode *replacement character*, '\uFFFD'
+- Each time a UTF-8 decoder, whether explicit in a call to ***utf8.DecodeRuneInString*** or implicit in a ***range*** loop, consumes an unexpected input byte, it generates a special Unicode *replacement character*, '\uFFFD'
 
 ![image-20210204215645201](../img/image-20210204215645201.png)
 
@@ -298,7 +295,7 @@ A ***Unicode code point***, in Go terminology called a ***rune***.  We could rep
 
 The [ ]byte(s) conversion allocates a new byte array holding a copy of the bytes of s, and yields a slice that references the entirety of that array.  
 
-- bytes.Buffer
+- *bytes.Buffer*
 
 The bytes package provides the **Buffer** type for efficient manipulation of byte slices  
 
@@ -360,15 +357,33 @@ Indices can appear in any order and some may be omitted, unspecified values take
 
 - The built-in ***append*** function appends items to slices
 
-- built-in function ***copy*** copies elements from one slice to another of the same type
+- built-in function ***copy*** copies elements from one slice to another of the same type,
 
-  returns the number of elements actually copied, which is the smaller slice length.
+  returns the number of elements actually copied, which is the smaller slice's length.
 
 ### 4.2.2 In-Place Slice Techniques
 
-
-
 ## 4.3 Maps
+
+- a map is a reference to a hash table
+
+- The key type K must be comparable using ==
+
+- Map elements are removed with the built-in function **delete**
+
+  `delete(ages,"alice") // remove element ages["alice"]`
+
+- a map lookup using a key that isn’t present returns the zero value for its type
+
+- a map element is not a variable, and we cannot take its address
+
+  `_ = &ages["bob"] // complie error: cannot take address of map element`
+
+  One reason that we can’t take the address of a map element is that growing a map might cause rehashing of existing elements into new storage locations   
+
+- Subscripting a map in this context yields two values; the second is a boolean that reports whether the element was present
+
+  `if age, ok := ages["bob"]; !ok {/* bob is not a key */}`
 
 
 

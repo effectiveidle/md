@@ -36,6 +36,40 @@ What problems can libp2p solve?
 
 ## Transport
 
+- In libp2p, we call these foundational protocols that move bits around transports, and one of libp2p’s core requirements is to be ***transport agnostic***.
+
+- **listening** and **dialing**
+
+  share the same programmatic interface
+
+- ***multiaddr***, an example includes a PeerId
+
+  `/ip4/7.7.7.7/tcp/6543/p2p/QmcEPrat8ShnCph8WjkREzt5CPXF2RwhYxYBALDcLC1iV6`
+
+- **switch**: responsible for composing ***multiple transports*** into a single interface
+
+## NAT Traversal
+
+## Secure Communication
+
+## Circuit Relay
+
+## Protocols
+
+## Peer Identity
+
+## Content Routing
+
+## Peer Routing
+
+## Addressing
+
+## Security Considerations
+
+## Publish/Subscribe
+
+## Stream Multiplexing
+
 
 
 
