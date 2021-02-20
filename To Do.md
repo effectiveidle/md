@@ -1,14 +1,14 @@
 To Do
 
-| Done |                                              |
-| :--- | -------------------------------------------- |
-| Mon  |                                              |
-| Tue  |                                              |
-| Wed  |                                              |
-| Thu  | Go 84-93                                     |
-| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99 |
-| Sat  | Consensus Algorithm\|Go 81-84                |
-| Sun  | libp2p                                       |
+| Done |                                                |
+| :--- | ---------------------------------------------- |
+| Mon  |                                                |
+| Tue  |                                                |
+| Wed  |                                                |
+| Thu  | Go 84-93                                       |
+| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99   |
+| Sat  | NAT Traversal \| 区块链技术与应用 23 \| Go 99- |
+| Sun  | libp2p                                         |
 
 ## BDWare
 

@@ -38,9 +38,9 @@ What problems can libp2p solve?
 
 - In libp2p, we call these foundational protocols that move bits around transports, and one of libp2p’s core requirements is to be ***transport agnostic***.
 
-- **listening** and **dialing**
+- Transports are defined in terms of two core operations: **listening** and **dialing**
 
-  share the same programmatic interface
+   in libp2p share the same programmatic interface
 
 - ***multiaddr***, an example includes a PeerId
 
@@ -49,6 +49,18 @@ What problems can libp2p solve?
 - **switch**: responsible for composing ***multiple transports*** into a single interface
 
 ## NAT Traversal
+
+- Automatic router configuration
+
+- Hole-punching(STUN)
+
+  an external peer can can tell us what address they observed us on, we can then take that address and advertise it to other peers in our *peer routing network* to let them know where to find us.
+
+- AutoNAT
+
+- Circuit Relay(TURN)
+
+  allows peers to communicate indirectly via a helpful intermediary peer
 
 ## Secure Communication
 

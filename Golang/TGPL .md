@@ -228,17 +228,14 @@ There is no implicit conversion from a boolean value to a numeric value, or vice
 
 A string is an immutable sequence of bytes.
 
-- len( )
-
-The built-in len function returns the number of bytes(not runes) in a string , and the index operation s[i] retrieves the i-th byte of string s. 
+The built-in ***len*** function returns the number of bytes(not runes) in a string , and the index operation s[i] retrieves the i-th byte of string s. 
 
 The **i-th byte** of a string is not necessarily the **i-th character**, because the UTF-8 encoding of a non-ASCII code point requires two or more bytes.  
 
 - The **substring** operation s[i : j] yields a new string.
 
 - The + operator makes a new string by concatenating two strings
-- The **byte** sequence contained in a string value can never be changed (but we can assign a new value to a string variable or to append one
-  string to another) Immutability means it is safe for two copies of a string to share the same underlying memory. 
+- The **byte** sequence contained in a string value can never be changed (but we can assign a new value to a string variable or to append one string to another) Immutability means it is safe for two copies of a string to share the same underlying memory. 
 
 ### 3.5.1 String Literals
 
@@ -385,9 +382,21 @@ Indices can appear in any order and some may be omitted, unspecified values take
 
   `if age, ok := ages["bob"]; !ok {/* bob is not a key */}`
 
-
-
 ## 4.4 Structs
+
+- A struct is a variable, and its fields are variables too.
+
+- The name of a struct *field* is exported if it begins with a capital letter 
+
+### 4.4.1 Struct Literals
+
+
+
+### 4.4.2 Comparing Structs
+
+
+
+### 4.4.3 Struct Embedding and Anonymous Fields
 
 
 
