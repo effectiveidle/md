@@ -390,18 +390,91 @@ Indices can appear in any order and some may be omitted, unspecified values take
 
 ### 4.4.1 Struct Literals
 
-
+1. values be specified for every field, in the right order
+2. listing some or all of the field names and their corresponding values  
 
 ### 4.4.2 Comparing Structs
 
+- If all the fields of a struct are comparable, the struct it self is comparable.
 
 
 ### 4.4.3 Struct Embedding and Anonymous Fields
 
+- *anonymous fields*
 
+  Declare a field with a type but no name, the type of the field must be a named type or a pointer to a named type, we can refer to the names at the leaves of the implicit tree
+
+  ```go
+w = Wheel{Circle{Point{8,8},5},20}
+  w = Wheel{
+      Circle: Circlle{
+          Point: Point{X:8, Y:8},
+          Radius: 5,
+      },
+      Spokes: 20,
+  }
+  ```
+  
 
 ## 4.5 JSON
 
+The basic JSON types are numbers(in decimal or scientific notation), booleans(true or
+false), and strings,which are sequences of Unicode code points enclosed in double quotes  These basic types maybe combined recursively using JSON arrays and objects.
 
+- *field tags*
 
-## 4.6 Text and HTML Templates
+  A field tag is a string of meta data associated at compile time with the field of a struct
+
+  The first part of the json field tag specifies an alternative JSON name for the Go field,
+
+  an additional option, *omitempty* indicates that no JSON output should be produced if the field has the zero value for its type  
+
+- *marshaling*, *unmarshaling*  
+
+## 4.6 Text and HTML Templates 114
+
+- {{action}}
+
+  A template is a string or file containing one or more portions enclosed in double braces, {{...}}, called *actions*.
+
+  Each action contains an expression in the template language
+
+  the | notation makes the result of one operation the argument of another  
+
+# 5 Functions
+
+## 5.1 Function Declarations
+
+``func name(parameter-list) (result-list) {
+	 body
+}``  
+
+- The type of a function is sometimes called its signature
+- a function declaration without a body indicating that the function is implemented in a language other than Go. Such a declaration defines the function signature.  
+
+## 5.2 Recursion
+
+Go implementations use ***variable-size stacks***.
+
+## 5.3 Multiple Return Values
+
+To ignore one of the values, assign it to the *blank identifier*
+
+- *bare return*
+
+  In a function with named results, the operands of a return statement may be omitted   
+
+## 5.4 Errors
+
+## 5.5 Function Values
+
+## 5.6 Anonymous Functions
+
+## 5.7 Variadic Functions
+
+## 5.8 Deferred Function Calls
+
+## 5.9 Panic
+
+## 5.10 Recover
+

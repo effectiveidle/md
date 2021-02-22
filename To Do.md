@@ -1,14 +1,14 @@
 To Do
 
-| Done |                                                |
-| :--- | ---------------------------------------------- |
-| Mon  |                                                |
-| Tue  |                                                |
-| Wed  |                                                |
-| Thu  | Go 84-93                                       |
-| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99   |
-| Sat  | NAT Traversal \| 区块链技术与应用 23 \| Go 99- |
-| Sun  | libp2p                                         |
+| Done |                                                   |
+| :--- | ------------------------------------------------- |
+| Mon  | Go135-151                                         |
+| Tue  |                                                   |
+| Wed  |                                                   |
+| Thu  | Go 84-93                                          |
+| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99      |
+| Sat  | NAT Traversal \| 区块链技术与应用 23 \| Go 99-117 |
+| Sun  | Go 118-134 \|                                     |
 
 ## BDWare
 
@@ -22,7 +22,7 @@ To Do
 
 ## Go
 
-- [x] The Go Programming Language 366
+- [x] The Go Programming Language 366/17
 - [x] A tour of Go
 
 > >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
