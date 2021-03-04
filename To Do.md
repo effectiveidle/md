@@ -1,75 +1,61 @@
-To Do
-
-| Done |                                                   |
-| :--- | ------------------------------------------------- |
-| Mon  | Go135-151                                         |
-| Tue  |                                                   |
-| Wed  |                                                   |
-| Thu  | Go 84-93                                          |
-| Fri  | Transport \| 区块链技术与应用 22 \| Go 93-99      |
-| Sat  | NAT Traversal \| 区块链技术与应用 23 \| Go 99-117 |
-| Sun  | Go 118-134 \|                                     |
-
-## BDWare
-
-- [x] 区块链技术与应用
-- [x] 区块链技术指南
-- [x] 比特币白皮书
-- [x] 以太坊白皮书
-- [x] Solidity文档(基础部分)
-- [x] Consensus Algorithm
-- [x] libp2p
-
-## Go
-
-- [x] The Go Programming Language 366/17
-- [x] A tour of Go
-
-> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-## Algorithm
+# Algorithm
 
 - [ ] 数据结构.邓俊辉
-- [ ] 王道机试指南
 - [ ] Leetcode
 
-## System
+# ComputerArchitecture
 
-- [ ] ostep
+- [x] Foudations of Computer Science
+- [ ] csapp
 
+# ComputerNetworking
 
-- [ ] MIT 6.s081
-- [ ] 深入理解计算机系统
-- [ ] 程序员自我修养
-- [ ] MIT 6.824
-
-## Networking
-
+- [x] libp2p
 - [ ] 计算机网络自顶向下
 - [ ] 网络是怎样连接的
-- [ ] 图解TCP/TP
+- [ ] 图解TCP/IP
 - [ ] 图解HTTP
 - [ ] TCP/IP详解卷Ⅰ
 
-## Database
+# Database
 
 - [ ] MySQL必知必会
 - [ ] 高性能MySQL
 
-## Operations
+# DistributedSystem
+
+- [x] 区块链技术与应用
+- [x] 区块链技术指南
+- [x] Solidity文档(基础部分)
+- [x] 比特币白皮书
+- [x] 以太坊白皮书
+- [x] Consensus Algorithm
+- [x] IPFS
+- [ ] MIT 6.824
+
+# OperatingSystem
+
+
+- [ ] MIT 6.s081
+- [ ] ostep
+
+# Operations
 
 - [x] Git
 - [ ] Linux
 - [ ] Docker
 
-## C/C++
+# ProgrammingLanguage
 
+- [x] The Go Programming Language
+- [ ] A tour of Go
+- [ ] Effective Go
 - [ ] The C Programming Language
 - [ ] C++ Primer
 - [ ] Effective C++
 - [ ] More Effective C++
 
-## Project
+# Project
 
 - [x] simpleWebsite(Go)
 - [ ] simpleBitcoin(Go)
