@@ -1,18 +1,12 @@
 # 1 Tutorial
 
-## command
-
-$ go run $ go bulid $ go get 
-
 ## Package
 
-Each source file begins with a package declaration that states which package the file belongs to, followed by a list of other packages that it imports.
-
-Package main is special. It defines a standalone executable program, not a library. Within package main the function main is also special — it's where execution of the program begins. Whatever main does is what the program does.
+Package *main* is special. It defines a standalone executable program, not a library. Within package main the function main is also special — it's where execution of the program begins. Whatever main does is what the program does.
 
 ## Format
 
-Many text editors can be configured to run **gofmt** each time you save a file, so that your source code is always properly formatted 
+gofmt
 
 ## Command-Line Arguments
 
@@ -27,20 +21,21 @@ It's a slice of string, the first element of os.Args, os.Args[0], is the name of
 - Go has 25 *key words* can’t be used as names. 
 
 
-| break    | default     | func   | interface | select |
+| 1        | 2           | 3      | 4         | 5      |
 | -------- | ----------- | ------ | --------- | ------ |
+| break    | default     | func   | interface | select |
 | case     | defer       | go     | map       | struct |
 | chan     | else        | goto   | package   | switch |
 | const    | fallthrough | if     | range     | type   |
 | continue | for         | import | return    | var    |
 
-- In addition, there are about three dozen *predeclared* names which are not reserved and can be redeclared
+- 
+  | *predeclared.names* | which are not reserved and can be redeclared                 |
+  | ------------------- | ------------------------------------------------------------ |
+  | constants           | true false iota nil                                          |
+  | Types               | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex64 complex128                                                  bool byte(uint8) rune(int32) string error |
+  | Functions           | make len cap new append copy close delete  complex real imag  panic recover |
 
-
-| Constants | true false iota nil                                          |
-| --------- | ------------------------------------------------------------ |
-| Types     | int int8 int16 int32 int64  uint uint8 uint16 uint32 uint64 uintptr  float32 float64 complex64 complex128                                                  bool byte(uint8) rune(int32) string error |
-| Functions | make len cap new append copy close delete  complex real imag  panic recover |
 
 - **The case of the first letter** of a name determines its visibility across package boundaries.
 
@@ -48,11 +43,9 @@ It's a slice of string, the first element of os.Args, os.Args[0], is the name of
 
 Each .go file begins with a package declaration that says what package the file is part of.
 
-four major kinds of **package-level** declarations
-
-- type, const, var, func
-
 The name of each package-level entity is visible not only throughout the source file that contains its declaration, but throughout all the files of the package.   
+
+four major kinds of **package-level** declarations: type, const, var, func
 
 ## 2.3-Variables
 
@@ -69,8 +62,6 @@ Package-level variables are initialized before main begins, and local variables 
 A short variable declaration acts like an assignment only to variables that were already declared in the same lexical block. A short variable declaration must declare at least one new variable  
 
 ### 2.3.2-Pointers
-
-The zero value for a pointer of any type is nil
 
 It is perfectly safe for a function to return the address of a **local variable** 
 
@@ -111,11 +102,8 @@ A type declaration defines a new named type that has the same underlying type as
 
 - Every type T has a corresponding conversion operation T(x) converts the value x to type T  
 
-  A conversion from one type to another is allowed if both have the same underlying type, or if both are unnamed pointer types that point to variables of the same underlying type, Conversions are also allowed between numeric types, and between string and some slice types  
+  A conversion from one type to another is allowed if both have the same underlying type, or if both are unnamed pointer types that point to variables of the same underlying type, conversions are also allowed between numeric types, and between string and some slice types  
 
-- type’s methods
-
-  Named types also make it possible to define new behaviors for values of the type. These behaviors are expressed as a set of functions associated with the type
 
 ## 2.6-Packages and Files
 
@@ -142,7 +130,7 @@ The scope of a declaration is a region of the program text; it is a **compile-ti
 
 - *lexical block*
 
-  A declaration’s lexical block determines its scope, There is a lexical block for the entire source code, called the *universe block* 
+  A declaration’s lexical block determines its scope, there is a lexical block for the entire source code, called the *universe block* 
 
 # 3 Basic Data Types
 
@@ -617,7 +605,7 @@ limits access to the fields of a struct or the methods of a type.
 
 Interface types express generalizations or abstractions about the behaviors of other types.
 
-An interface is an *abstract type* ( vs *concrete types*) . It doesn’t expose the representation or internal structure of its values or the set of basic operations , it reveals only some of their **methods**
+An interface is an *abstract type* (vs *concrete type*) . It doesn’t expose the representation or internal structure of its values or the set of basic operations, it reveals only some of their **methods**
 
 *satisfied implicitly*
 
@@ -639,8 +627,6 @@ The `io.Writer` type is one of the most widely used interfaces because it provid
 *embedding* an interface
 
 ## 7.3. Interface Satisfaction
-
-A type satisfies an interface if it possesses all the methods the interface requires
 
 a concrete type ‘‘is a’’ particular interface type, meaning that it satisfies the interface.
 
@@ -699,36 +685,164 @@ interface values are **comparable**
 
 ## 7.6. Sorting with sort.Interface
 
+use sort.Interface to specify the contract between the generic sort algorithm and each sequence type that may be sorted.
 
+The sort package defines an unexported type *reverse*, which is a struct that embeds a sort.Interface, the exported function *Reverse* returns an instance of the reverse type.
+
+```go
+package sort
+type Interface interface {
+    Len() int
+    Less(i, j int) bool
+    Swap(i, j int)
+}
+
+type reverse struct{ Interface } // that is, sort.interface
+func (r reverse) Less(i, j int) bool { return r.Interface.Less(j,i) }
+//Len and Swap, the other two methods of reverse, are implicitly provided by the original.
+func Reverse(data Interfaxe) Interface { return reverse{data} }
+```
 
 ## 7.7. The http.Handler Interface
 
+```go
+package http
 
+type Handler interface {
+    ServeHTTP(w ResponseWriter, r *Request)
+}
+func ListenAndServe(address string, h Handler) error
+//HandlerFunc is an adapter that lets a function value satisfy an interface
+type HandlerFunc func(w ResponseWriter, r *Request)
+func (f Handlerfunc) ServerHTTP(w ResponseWriter, r *Request) {
+    f(w,r)
+}
+```
 
 ## 7.8. The error Interface
 
+```go
+type error interface {
+    Error() string
+}
 
+package errors
+func New(text string) error { return &errorString{text} }
+type errorString struct { text string }
+// The underlying type of errorString is a struct, not a string, to protect its representation from inadvertent (or premeditated) updates
+func (e *errorString) Error() string { return e.text }
+// the pointer type *errorString, not errorString alone, satisfies the error interface is so that every call to New allocates a distinct error instance that is equal to no other
+
+// a convenient wrapper function fmt.Errorf
+func Errorf(format string, args ...interface{}) error {
+    return errors.New(Sprintf(format,args...))
+}
+```
 
 ## 7.9. Example: Expression Evaluator
 
-
+--
 
 ## 7.10. Type Assertions
 
+`x.(T)`, x is an expression of interface type, T is a concrete type or non-nil interface type, called *asserted type*.
 
+A type assertion checks that the *dynamic type* of its operand matches the asserted type
 
 ## 7.11. Discriminating Errors with Type  Assertions
 
-
+use a type assertion to detect the specific type of the error
 
 ## 7.12. Querying Behaviors with Interface Type Assertions
 
+uses a type assertion to see whether a value of a general interface type also satisfies a more specific interface type, and if so, it uses the methods of the specific interface
+
 ## 7.13. Type Switches
 
+Interfaces are used in two distinct styles:
 
+1. The emphasis is on the methods, not on the concrete types
+
+   an interface’s methods express the similarities of the concrete types that satisfy the interface but hide the representation details and intrinsic operations of those concrete types
+
+2. *discriminated unions*
+
+   exploits the ability of an interface value to hold values of a variety of concrete types and considers the interface to be the *union* of those types, the emphasis is on the concrete types that satisfy the interface, not on the interface’s methods, and there is no hiding of information. **Type assertions** are used to discriminate among these types dynamically and treat each case differently
+   
+   `switch x := x.(type) {...}` 
 
 ## 7.14. Example: Token-Based XML Decoding
 
-
+--
 
 ## 7.15. A Few Words of Advice
+
+--
+
+# 8 Goroutines and Channels 217-256
+
+*communicating sequential processes*（CSP)
+
+## 8.1. Goroutines
+
+*main goroutine*  
+
+When main function returns, all goroutines are abruptly terminated and the program exits
+
+## 8.2. Example: Concurrent Clock Server
+
+`go handleConn(conn)`
+
+## 8.3. Example: Concurrent Echo Server
+
+--
+
+## 8.4. Channels
+
+A channnel is a communication mechanism that lets one goroutine send values to another goroutine
+
+Each channel is a conduit for values of a particular type, called the channel’s *element type*
+
+A channel has two principal operations, *send* and *receive* `<-`, and a third operation, *close*
+
+Receive operations on a closed channel yield the values that have been sent until no more values are left
+
+If the *capacity* is non zero, *make* creates a *buffered* channel  
+
+### 8.4.1. Unbuffered Channels
+
+Communication over an unbuffered channel causes the sending and receiving goroutines to *synchronize*
+
+*happens before*
+
+When the *event* carries no additional information, its sole purpose is synchronization.
+
+### 8.4.2. Pipeline
+
+the output of one is the input to another
+
+After the closed channel has been *drained*, that is, after the last sent element has been received, all subsequent receive operations will proceed without blocking but will yield a **zero value**
+
+A channel that the garbage collector determines to be unreachable will have its resources reclaimed whether or not it is closed
+
+### 8.4.3. Unidirectional Channel Type
+
+it is a compile-time error to attempt to close a receive-only channel (`<-chan int`)
+
+Conversions from bidirectional to unidirectional channel types are permitted in any assignment, but no going back
+
+### 8.4.4. Buffered Channels
+
+
+
+## 8.5. Looping in Paralle
+
+## 8.6. Example: Concurrent Web Crawler
+
+## 8.7. Multiplexing with select
+
+## 8.8. Example: Concurrent Directory Traversal
+
+## 8.9. Cancellation
+
+## 8.10. Example: Chat Server

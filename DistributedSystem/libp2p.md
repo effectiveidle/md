@@ -24,7 +24,7 @@ What problems can libp2p solve?
 
   We may want some specific piece of data, but we don’t care who we get it from since we’re able to verify its integrity, libp2p provides a content routing interface 
 
-- Messaging / Pubsub
+- Messaging/Pubsub
 
   libp2p defines a pubsub interface for sending messages to all peers subscribed to a given “topic”.
 
@@ -253,10 +253,6 @@ https://docs.libp2p.io/reference/glossary/
 
 the specifications for libp2p, a framework and suite of protocols for building peer-to-peer network applications
 
-## Specs Framework
-
---
-
 ## Core Abstractions and Types
 
 ### Connection Establishment in libp2p 
@@ -461,21 +457,35 @@ A private network is defined by the 256-bit secret key, which has to be known an
   
   - EncOpts
   
-  
+    The `EncOpts` message describes an encryption scheme for messages
+
+- Topic Validation
+
+  Implementations MUST support attaching *validators* to topics
+
+#### gossipsub
+
+Gossipsub is an extensible baseline pubsub protocol, based on randomized topic meshes and gossip, the protocol is designed to be extensible by more specialized routers
+
+##### episub
 
 ### Circuit Relay
 
-
+Relay is needed in situations where nodes are behind NAT, reverse proxies, firewalls and/or simply don't support the same transports.
 
 ### Rendezvous protocol
 
-
+provide a lightweight mechanism for generalized peer discovery. It can be used for bootstrap purposes, real time peer discovery, application specific routing, and so on
 
 ### SECIO
 
+- Data Structures
 
+  `Propose` and `Exchange` are the only serialized types required to implement SECIO
 
 ### TLS Handshake
+
+he libp2p handshake uses TLS 1.3 (and higher).
 
 
 
